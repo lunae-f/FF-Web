@@ -1,0 +1,91 @@
+body {
+    font-family: sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+}
+
+h1 {
+    margin-top: 0;
+    color: #1a73e8;
+}
+
+#uploader {
+    display: block;
+    margin: 1.5rem auto;
+}
+
+#transcodeButton {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#transcodeButton:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+#transcodeButton:not(:disabled):hover {
+    background-color: #1558b3;
+}
+
+#status {
+    margin-top: 1.5rem;
+    font-weight: bold;
+    min-height: 1.2em; /* 高さを確保してガタツキ防止 */
+}
+
+#result a {
+    display: inline-block;
+    margin-top: 1rem;
+    background-color: #34a853;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+#result a:hover {
+    background-color: #2b8a43;
+}
+
+.options {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* ラベルとセレクトボックスの間隔 */
+}
+
+#formatSelector {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+.container.dragover {
+    border: 3px dashed #1a73e8;
+    background-color: #f0f8ff;
+}

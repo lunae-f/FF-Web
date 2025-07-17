@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Converter</title>
+    
+    <script src="coi-serviceworker.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>Media Converter</h1>
+        <p>ffmpeg.wasmを利用したブラウザ完結型のメディアコンバーターです。</p>
+
+        <input type="file" id="uploader" accept="audio/*,video/*">
+
+        <div class="options">
+            <label for="formatSelector">変換後のフォーマット:</label>
+            <select id="formatSelector">
+                <option value="mp3" selected>MP3(.mp3)</option>
+                <option value="m4a">AAC(.m4a)</option>
+                <option value="flac">FLAC(.flac)</option>
+                <option value="wav">WAV(.wav)</option>
+                <option value="opus">Opus(.webm)</option>
+            </select>
+        </div>
+
+        <button id="transcodeButton" disabled>変換実行</button>
+
+        <p id="status">変換したいファイルを選択してください。</p>
+
+        <div id="result"></div>
+    </div>
+
+    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
