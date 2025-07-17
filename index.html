@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Media Converter</title>
+    <title>FF-Web</title>
     
     <script src="coi-serviceworker.min.js"></script>
     
@@ -11,9 +11,10 @@
 </head>
 <body>
 
+<main>
     <div class="container">
-        <h1>Media Converter</h1>
-        <p>ffmpeg.wasmを利用したブラウザ完結型のメディアコンバーターです。</p>
+        <h1>FF-Web</h1>
+        <p>100%ローカルで音声を変換します</p>
 
         <input type="file" id="uploader" accept="audio/*,video/*">
 
@@ -28,15 +29,20 @@
             </select>
         </div>
 
-        <button id="transcodeButton" disabled>変換実行</button>
+        <button id="transcodeButton" disabled>変換！</button>
 
-        <p id="status">変換したいファイルを選択してください。</p>
+        <p id="status">ファイルを選択するかドラッグ&ドロップしてください</p>
 
         <div id="result"></div>
     </div>
+</main>
 
-    <script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
-    <script src="script.js"></script>
+<footer>
+    <a href="https://github.com/lunae-f/FF-Web" target="_blank" rel="noopener noreferrer">FF-Web</a>, made with ❤️‍🔥 by Lunae. | MIT License
+</footer>
+
+<script src="https://unpkg.com/@ffmpeg/ffmpeg@0.11.0/dist/ffmpeg.min.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
