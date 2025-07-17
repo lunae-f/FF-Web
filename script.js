@@ -13,8 +13,23 @@ const transcodeButton = document.getElementById('transcodeButton');
 const statusP = document.getElementById('status');
 const resultDiv = document.getElementById('result');
 const formatSelector = document.getElementById('formatSelector');
+const container = document.querySelector('.container'); // ▼ 追加
 
 let selectedFile = null;
+
+/**
+ * ファイルが選択されたときの共通処理
+ * @param {File} file 選択またはドロップされたファイル
+ */
+const handleFileSelect = (file) => {
+    if (!file) {
+        return;
+    }
+    selectedFile = file;
+    transcodeButton.disabled = false;
+    statusP.textContent = `ファイルを選択しました: ${selectedFile.name}`;
+    resultDiv.innerHTML = '';
+};
 
 /**
  * メインの変換処理
@@ -89,15 +104,37 @@ const transcode = async () => {
     }
 };
 
-// ファイルが選択されたときのイベント
+// ファイル選択ボタンのイベント
 uploader.addEventListener('change', (e) => {
-    selectedFile = e.target.files[0];
-    if (selectedFile) {
-        transcodeButton.disabled = false;
-        statusP.textContent = `ファイルを選択しました: ${selectedFile.name}`;
-        resultDiv.innerHTML = '';
-    }
+    handleFileSelect(e.target.files[0]);
 });
 
-// 変換ボタンがクリックされたときのイベント
+// 変換ボタンのイベント
 transcodeButton.addEventListener('click', transcode);
+
+// ▼ ここからドラッグ＆ドロップのイベント処理を追加 ▼
+
+// デフォルトの動作を無効化
+container.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    container.classList.add('dragover');
+});
+
+// ドロップエリアから離れたときの処理
+container.addEventListener('dragleave', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    container.classList.remove('dragover');
+});
+
+// ファイルがドロップされたときの処理
+container.addEventListener('drop', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    container.classList.remove('dragover');
+
+    // 複数ファイルがドロップされても最初の1つだけを対象にする
+    const file = e.dataTransfer.files[0];
+    handleFileSelect(file);
+});
