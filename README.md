@@ -1,7 +1,7 @@
 # FF-Web
 
 <p align="center">
-  <img src="Screenshot.png" alt="FF-Web Screenshot" width="600">
+  <img src="ffweb-demo.gif" alt="FF-Web Screenshot" width="600">
 </p>
 
 <p align="center">
